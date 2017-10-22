@@ -4,16 +4,19 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "clean": "rm -rf dist",
     "build": "babel src/server --out-dir dist/server --presets=env",
-    "start": "node dist/server/start.js"
+    "clean": "rm -rf dist",
+    "start": "nodemon dist/server/start.js",
+    "watch": "npm run build -- --watch"
   },
   "dependencies": {
     "babel-cli": "^6.26.0",
     "babel-preset-env": "^1.6.1",
     "express": "^4.16.2"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "nodemon": "^1.12.1"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/danmakenoise/workflowr.git"
