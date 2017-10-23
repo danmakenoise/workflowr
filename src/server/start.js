@@ -4,6 +4,8 @@ const app = express();
 
 app.set('view engine', 'pug');
 
+app.use('/client', express.static('dist/client'));
+
 app.get('/', (req, res) => {
   res.render('index');
 });
