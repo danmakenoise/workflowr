@@ -10,10 +10,11 @@
     "lint": "eslint src",
     "start": "nodemon dist/server/start.js",
     "watch:client": "webpack --watch",
-    "watch:server": "npm run build -- --watch"
+    "watch:server": "npm run build:server -- --watch"
   },
   "dependencies": {
     "babel-cli": "^6.26.0",
+    "babel-polyfill": "^6.26.0",
     "babel-preset-env": "^1.6.1",
     "express": "^4.16.2",
     "mongodb": "^2.2.33",

@@ -1,15 +1,35 @@
 import express from 'express';
 
-const app = express();
+import setupDatabase from './db';
 
-app.set('view engine', 'pug');
+require('babel-polyfill');
 
-app.use('/client', express.static('dist/client'));
+const start = async () => {
+  let db;
 
-app.get('/', (req, res) => {
-  res.render('index');
-});
+  try {
+    db = await setupDatabase();
+  } catch (err) {
+    throw err;
+  }
 
-app.listen(3000, () => {
-  console.log('listening on localhost:3000'); // eslint-disable-line no-console
-});
+  if (db) {
+    console.log('connected to database'); // eslint-disable-line no-console
+  }
+
+  const app = express();
+
+  app.set('view engine', 'pug');
+
+  app.use('/client', express.static('dist/client'));
+
+  app.get('/', (req, res) => {
+    res.render('index');
+  });
+
+  app.listen(3000, () => {
+    console.log('listening on localhost:3000'); // eslint-disable-line no-console
+  });
+};
+
+start();
