@@ -5,15 +5,15 @@ import setupDatabase from './db';
 require('babel-polyfill');
 
 const start = async () => {
-  let db;
+  let models;
 
   try {
-    db = await setupDatabase();
+    models = await setupDatabase();
   } catch (err) {
     throw err;
   }
 
-  if (db) {
+  if (models) {
     console.log('connected to database'); // eslint-disable-line no-console
   }
 
