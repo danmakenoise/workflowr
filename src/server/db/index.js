@@ -1,16 +1,15 @@
 import mongoose from 'mongoose';
 
-const setupDatabase = () =>
+const setupDatabase = url =>
   new Promise((resolve, reject) => {
     const { Schema, model } = mongoose;
     const { Types } = Schema;
     const { ObjectId } = Types;
 
-    const DB_URL = 'mongodb://localhost:27017/workflowr-dev';
     const USER_MODEL_NAME = 'User';
     const LIST_ITEM_MODEL_NAME = 'ListItem';
 
-    mongoose.connect(DB_URL, { useMongoClient: true });
+    mongoose.connect(url, { useMongoClient: true });
     mongoose.Promise = global.Promise;
 
     const userSchema = new Schema({

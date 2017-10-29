@@ -4,11 +4,13 @@ import setupDatabase from './db';
 
 require('babel-polyfill');
 
+const DB_URL = 'mongodb://localhost:27017/workflowr-dev';
+
 const start = async () => {
   let models;
 
   try {
-    models = await setupDatabase();
+    models = await setupDatabase(DB_URL);
   } catch (err) {
     throw err;
   }
